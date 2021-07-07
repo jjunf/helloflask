@@ -31,6 +31,13 @@ def greet(name):
     return '<h1>Hello, %s!</h1>' % name
 
 
+# 输出多个参数求和的情况
+@app.route('/add', defaults={'a': 1, 'b': 2})
+@app.route('/add/<a>/<b>')
+def add(a, b):
+    return '<h2>%s+%s=<h2><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s<h1>' % (a, b, (int(a) + int(b)))
+
+
 # custom flask cli command
 @app.cli.command()
 def hello():
