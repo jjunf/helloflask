@@ -53,6 +53,15 @@ def three_colors(color):
     return '<p>Love is patient and kind. Love is not jealous or boastful or proud or rude.</p>'
 
 
+color_list = ['r', 'b', 'w', 'y']
+
+
+# use color_list
+@app.route('/color_list/<any(%s):color>' % str(color_list)[1: -1])
+def list_colors(color):
+    return "<p>color_list:['r', 'b', 'w', 'y'].</p>"
+
+
 # return error response
 @app.route('/brew/<drink>')
 def teapot(drink):
@@ -129,7 +138,7 @@ body: Don't forget the party!
 @app.route('/set/<name>')
 def set_cookie(name):
     response = make_response(redirect(url_for('hello')))
-    response.set_cookie('name', name)
+    response.set_cookie('name', name, 3600)
     return response
 
 
